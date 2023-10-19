@@ -1,8 +1,19 @@
 ﻿<Application x:Class="SB_Module_10.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:SB_Module_10.ViewModels"
+             xmlns:v="clr-namespace:SB_Module_10.Views"
              StartupUri="Views/MainWindow.xaml">
     <Application.Resources>
+        <DataTemplate DataType="{x:Type vm:AuthenticationViewModel}">
+            <v:AuthenticationView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:ManagerViewModel}">
+            <v:ManagerView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:ConsultantViewModel}">
+            <v:ConsultantView/>
+        </DataTemplate>
 
     </Application.Resources>
 </Application>

@@ -3,100 +3,48 @@ using System;
 
 namespace SB_Module_10.Models
 {
-    public class Manager : Repository, IManager
+    public class Manager : Employee, IManager
     {
         public void AddClientToDB(string surname, string name, string phoneNumber, string passportSeries, string passportNumber, string patronymics = null)
         {
             var c = new Client(surname, name, patronymics, phoneNumber, passportSeries , passportNumber);
-            _context.ClientsList.Add(c);
-            _context.SaveDataToDB();
+            _repository._context.ClientsList.Add(c);
+            _repository._context.SaveDataToDB();
         }
 
         public void DeleteClient(Client client)
         {
-            foreach (var c in _context.ClientsList)
+            foreach (var c in _repository._context.ClientsList)
             {
-                if (c.Equals(client))
+                if (c.PassportData == client.PassportData)
                 {
-                    _context.ClientsList.Remove(c);
-                    _context.SaveDataToDB();
+                    _repository._context.ClientsList.Remove(c);
+                    _repository._context.SaveDataToDB();
                 }
             }
         }
 
-        public void EditName(Client client, string name)
+        public void EditClient(Client client, string surname, string name, string patronymic, string phoneNumber, string passportSeries, string passportNumber)
         {
-            foreach (var c in _context.ClientsList)
-            {
-                if (c.Equals(client))
-                {
-                    c.Name = name;
-                    _context.SaveDataToDB();
-                    c.DataChangedTime = DateTime.Now;
-                    c.ChangeInitiator = ToString();
-                    c.FieldChanged = "Name";
-                }
-            }
-        }
 
-        public void EditPassportNumber(Client client, string passportNumber)
-        {
-            foreach (var c in _context.ClientsList)
+            foreach (var c in _repository._context.ClientsList)
             {
-                if (c.Equals(client))
+                if (c.PassportData == client.PassportData)
                 {
-                    c.PassportNumber = passportNumber;
-                    _context.SaveDataToDB();
+                    if (c.Surname !=  surname) c.Surname = surname;
+                    if (c.Name != name) c.Name = name;
+                    if (c.Patronymics != patronymic) c.Patronymics = patronymic;
+                    if (c.PhoneNumber != phoneNumber) c.PhoneNumber = phoneNumber;
+                    if (c.PassportSeries != passportSeries) c.PassportSeries = passportSeries;
+                    if (c.PassportNumber != passportNumber) c.PassportNumber = passportNumber;
                 }
+                var _client = new Client(this, c);
+                int index = _repository._context.ClientsList.IndexOf(c);
+                _repository._context.ClientsList.RemoveAt(index);
+                _repository._context.ClientsList.Insert(index, _client);
+                break;
             }
-        }
-
-        public void EditPassportSeries(Client client, string passportSeries)
-        {
-            foreach (var c in _context.ClientsList)
-            {
-                if (c.Equals(client))
-                {
-                    c.PassportSeries = passportSeries;
-                    _context.SaveDataToDB();
-                }
-            }
-        }
-
-        public void EditPatronymics(Client client, string patronymics)
-        {
-            foreach (var c in _context.ClientsList)
-            {
-                if (c.Equals(client))
-                {
-                    c.Patronymics = patronymics;
-                    _context.SaveDataToDB();
-                }
-            }
-        }
-
-        public void EditPhoneNumber(Client client, string phoneNumber)
-        {
-            foreach (var c in _context.ClientsList)
-            {
-                if (c.Equals(client))
-                {
-                    c.PhoneNumber = phoneNumber;
-                    _context.SaveDataToDB();
-                }
-            }
-        }
-
-        public void EditSurname(Client client, string surname)
-        {
-            foreach (var c in _context.ClientsList)
-            {
-                if (c.Equals(client))
-                {
-                    c.Surname = surname;
-                    _context.SaveDataToDB();
-                }
-            }
+            _repository._context.SaveDataToDB();
         }
     }
 }

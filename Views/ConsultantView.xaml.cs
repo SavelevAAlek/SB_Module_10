@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace SB_Module_10.Views
 {
     /// <summary>
-    /// Логика взаимодействия для AuthenticationView.xaml
+    /// Логика взаимодействия для ConsultantView.xaml
     /// </summary>
-    public partial class AuthenticationView : UserControl
+    public partial class ConsultantView : UserControl
     {
-        public AuthenticationView()
+        public ConsultantView()
         {
             InitializeComponent();
         }

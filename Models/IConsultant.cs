@@ -4,6 +4,6 @@ namespace SB_Module_10.Models
 {
     public interface IConsultant
     {
-        void EditPhoneNumber(Client client, string phoneNumber);
+        void EditClient(Client client, string surname, string name, string patronymic, string phoneNumber, string passportSeries, string passportNumber);
     }
 }

@@ -9,7 +9,7 @@ namespace SB_Module_10.Infrastructure
 {
     public class Repository : IRepository
     {
-        protected readonly DataContext _context;
+        public readonly DataContext _context;
         public Repository()
         {
             _context = new DataContext();

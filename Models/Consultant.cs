@@ -7,18 +7,25 @@ using System.Threading.Tasks;
 
 namespace SB_Module_10.Models
 {
-    public class Consultant : Repository, IConsultant
+    public class Consultant : Employee, IConsultant
     {
-        public void EditPhoneNumber(Client client, string phoneNumber)
+        public void EditClient(Client client, 
+            string phoneNumber, 
+            string surname = null, 
+            string name = null, 
+            string patronymic = null, 
+            string passportSeries = null, 
+            string passportNumber = null)
         {
-            foreach (var c in _context.ClientsList)
+            foreach (var c in _repository._context.ClientsList)
             {
-                if (c.Equals(client))
+                if (c.PassportData == client.PassportData)
                 {
                     c.PhoneNumber = phoneNumber;
-                    _context.SaveDataToDB();
+                    break;
                 }
             }
+            _repository._context.SaveDataToDB();
         }
     }
 }

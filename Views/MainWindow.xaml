@@ -7,6 +7,21 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
 
+        <TextBlock Text="TEST"
+                   FontSize="20"
+                   Grid.Row="0"/>
+
+        <Button Content="Change role"
+                Width="100"
+                Command="{Binding SelectRoleCommand}"
+                CommandParameter="Change role"/>
+
+        <UserControl Grid.Row="1"
+                     Content="{Binding SelectedViewModel}"/>
     </Grid>
 </Window>
