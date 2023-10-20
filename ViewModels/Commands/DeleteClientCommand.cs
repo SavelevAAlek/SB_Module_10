@@ -4,13 +4,13 @@ using System.Windows.Input;
 
 namespace SB_Module_10.ViewModels.Commands
 {
-    public class EditClientCommand : ICommand
+    public class DeleteClientCommand : ICommand
     {
         public event EventHandler? CanExecuteChanged;
-        private IConsultant _employee;
+        private IManager _employee;
         private ViewModelBase _viewModel;
 
-        public EditClientCommand(IConsultant employee, ViewModelBase viewModel)
+        public DeleteClientCommand(IManager employee, ViewModelBase viewModel)
         {
             _employee = employee;
             _viewModel = viewModel;
@@ -20,7 +20,7 @@ namespace SB_Module_10.ViewModels.Commands
 
         public void Execute(object? parameter)
         {
-            _employee.EditClient((_viewModel as ConsultantViewModel).SelectedClient);
+            _employee.DeleteClient((_viewModel as ManagerViewModel).SelectedClient);
         }
     }
 }

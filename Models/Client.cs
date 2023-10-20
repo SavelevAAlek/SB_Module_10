@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SB_Module_10.Models
 {
@@ -21,7 +17,6 @@ namespace SB_Module_10.Models
         public Dictionary<string, string> Changes { get; set; } = new Dictionary<string, string>();
 
         public Client() { }
-        public Client(Client client) : this (client.Surname, client.Name, client.Patronymics, client.PhoneNumber, client.PassportSeries, client.PassportNumber) { }
         public Client(string surname, string name, string patronymics, string phoneNumber, string passportSeries, string passportNumber)
         {
             Surname = surname;
@@ -31,6 +26,7 @@ namespace SB_Module_10.Models
             PassportSeries = passportSeries;
             PassportNumber = passportNumber;
         }
+        public Client(Client client) : this (client.Surname, client.Name, client.Patronymics, client.PhoneNumber, client.PassportSeries, client.PassportNumber) { }
         public Client(Employee employee, Client client, IEnumerable<KeyValuePair<string, string>> changes) 
             : this(client.Surname, client.Name, client.Patronymics, client.PhoneNumber, client.PassportSeries, client.PassportNumber)
         {

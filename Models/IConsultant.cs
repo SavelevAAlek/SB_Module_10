@@ -1,6 +1,4 @@
-﻿using SB_Module_10.Infrastructure;
-
-namespace SB_Module_10.Models
+﻿namespace SB_Module_10.Models
 {
     public interface IConsultant
     {
