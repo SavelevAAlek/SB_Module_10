@@ -24,7 +24,7 @@ namespace SB_Module_10.ViewModels.Commands
 
         public void Execute(object? parameter)
         {
-            
+            _consultant.EditClient((_viewModel as ConsultantViewModel).SelectedClient);
         }
     }
 }

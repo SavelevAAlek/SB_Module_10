@@ -9,9 +9,6 @@ namespace SB_Module_10.Models
 {
     public class Client 
     {
-        private Employee _employee;
-        private DateTime _date;
-        private string _fieldChanged;
         public string Surname { get; set; }
         public string Name { get; set; }
         public string Patronymics { get; set; }
@@ -19,16 +16,12 @@ namespace SB_Module_10.Models
         public string PassportSeries { get; set; }
         public string PassportNumber { get; set; }
         public string PassportData { get => $"{PassportSeries} {PassportNumber}"; }
-        public DateTime DataChangedTime { get => _date; set { _date = DateTime.Now; } }
-        public string FieldChanged { get; set; }
-        public string DataTypeChanged { get; set; }
-        public object ChangeInitiator { get => _employee.ToString(); }
+        public DateTime DataChangedTime { get; set; }
+        public string ChangeInitiator { get; set; } 
+        public Dictionary<string, string> Changes { get; set; } = new Dictionary<string, string>();
 
         public Client() { }
-        public Client(Employee employee, Client client)
-        {
-            _employee = employee;   
-        }
+        public Client(Client client) : this (client.Surname, client.Name, client.Patronymics, client.PhoneNumber, client.PassportSeries, client.PassportNumber) { }
         public Client(string surname, string name, string patronymics, string phoneNumber, string passportSeries, string passportNumber)
         {
             Surname = surname;
@@ -37,6 +30,13 @@ namespace SB_Module_10.Models
             PhoneNumber = phoneNumber;
             PassportSeries = passportSeries;
             PassportNumber = passportNumber;
+        }
+        public Client(Employee employee, Client client, IEnumerable<KeyValuePair<string, string>> changes) 
+            : this(client.Surname, client.Name, client.Patronymics, client.PhoneNumber, client.PassportSeries, client.PassportNumber)
+        {
+            ChangeInitiator = employee.ToString();
+            DataChangedTime = DateTime.Now.ToLocalTime();
+            Changes = new Dictionary<string, string>(changes);
         }
 
         public override string ToString() => $"{Surname}#{Name}#{Patronymics}#{PhoneNumber}#{Patronymics}";

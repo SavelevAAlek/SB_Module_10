@@ -38,13 +38,18 @@ namespace SB_Module_10.Models
                     if (c.PassportSeries != passportSeries) c.PassportSeries = passportSeries;
                     if (c.PassportNumber != passportNumber) c.PassportNumber = passportNumber;
                 }
-                var _client = new Client(this, c);
-                int index = _repository._context.ClientsList.IndexOf(c);
-                _repository._context.ClientsList.RemoveAt(index);
-                _repository._context.ClientsList.Insert(index, _client);
+                //var _client = new Client(this, c);
+                //int index = _repository._context.ClientsList.IndexOf(c);
+                //_repository._context.ClientsList.RemoveAt(index);
+                //_repository._context.ClientsList.Insert(index, _client);
                 break;
             }
             _repository._context.SaveDataToDB();
+        }
+
+        public void EditClient(Client client)
+        {
+            throw new NotImplementedException();
         }
     }
 }
