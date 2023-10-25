@@ -2,9 +2,8 @@
 {
     public class Manager : Employee, IManager
     {
-        public void AddClientToDB(string surname, string name, string patronymics, string phoneNumber, string passportSeries, string passportNumber)
+        public void AddClientToDB(Client client)
         {
-            var client = new Client(surname, name, patronymics, phoneNumber, passportSeries , passportNumber);
             _repository._context.ClientsList.Add(client);
             _repository._context.SaveDataToDB();
         }

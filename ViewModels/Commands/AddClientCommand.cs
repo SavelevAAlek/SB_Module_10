@@ -21,13 +21,7 @@ namespace SB_Module_10.ViewModels.Commands
 
         public void Execute(object? parameter)
         {
-            _employee.AddClientToDB(
-                (_viewModel as AddClientViewModel).Surname,
-                (_viewModel as AddClientViewModel).Name,
-                (_viewModel as AddClientViewModel).Patronymics,
-                (_viewModel as AddClientViewModel).PhoneNumber,
-                (_viewModel as AddClientViewModel).PassportSeries,
-                (_viewModel as AddClientViewModel).PassportNumber);
+            _employee.AddClientToDB((_viewModel as AddClientViewModel).Client);
         }
     }
 }

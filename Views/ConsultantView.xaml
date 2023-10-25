@@ -18,8 +18,8 @@
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="500"/>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
             <DataGrid ItemsSource="{Binding ClientsList}"
@@ -38,33 +38,15 @@
                                         Binding="{Binding Patronymics}"/>
                     <DataGridTextColumn Header="Phone Number"
                                         Binding="{Binding PhoneNumber}"/>
-                    <DataGridTemplateColumn Header="Passport Data">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="**** ******"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
 
             <Border Grid.Column="1"
-                        Background="Wheat">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
+                    Background="Wheat"
+                    Width="Auto">
+                <UserControl Content="{Binding ClientControl}">
 
-                    <TextBox Text="{Binding SelectedClient.Surname}" Height="20" VerticalAlignment="Top"/>
-                    <TextBox Text="{Binding SelectedClient.Name}" Height="20" VerticalAlignment="Top" Margin="0,30"/>
-                    <TextBox Text="{Binding SelectedClient.Patronymics}" Height="20" VerticalAlignment="Top" Margin="0,60"/>
-                    <TextBox Text="{Binding SelectedClient.PhoneNumber}" Height="20" VerticalAlignment="Top" Margin="0,90"/>
-                    <TextBox Text="{Binding SelectedClient.PassportSeries}" Height="20" VerticalAlignment="Top" Margin="0,120"/>
-                    <TextBox Text="{Binding SelectedClient.PassportNumber}" Height="20" VerticalAlignment="Top" Margin="0,150"/>
-                    <Button Grid.Column="1" Command="{Binding EditClientCommand}" />
-
-                </Grid>
+                </UserControl>
             </Border>
                 
         </Grid>

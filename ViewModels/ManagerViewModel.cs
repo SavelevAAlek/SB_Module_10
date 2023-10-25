@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace SB_Module_10.ViewModels
@@ -18,7 +19,9 @@ namespace SB_Module_10.ViewModels
         private ObservableCollection<Client> _clientsList;
         private string _desiredClientsData = "";
         private Client _selectedClient;
+        private ViewModelBase _clientControl;
 
+        public ViewModelBase ClientControl { get => _clientControl; set => SetProperty(ref _clientControl, value); }
         public ObservableCollection<Client> ClientsList { get => _clientsList; set => SetProperty(ref _clientsList, value); }
         public string DesiredClientsData
         {
@@ -32,7 +35,18 @@ namespace SB_Module_10.ViewModels
                     ClientsList = new ObservableCollection<Client>(_repository.GetList());
             }
         }
-        public Client SelectedClient { get => _selectedClient; set => SetProperty(ref _selectedClient, value); }
+        public Client SelectedClient
+        {
+            get => _selectedClient;
+            set
+            {
+                if (value != null)
+                {
+                    SetProperty (ref _selectedClient, value);
+                    ClientControl = new ClientViewModel(SelectedClient, this);
+                }
+            }
+        }
 
         public ICommand EditClientCommand { get; set; }
 
