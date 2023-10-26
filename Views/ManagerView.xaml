@@ -6,14 +6,36 @@
              xmlns:local="clr-namespace:SB_Module_10.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/TextBoxPlaceholder.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <TextBox Grid.Row="0"
-         Text="{Binding DesiredClientsData, UpdateSourceTrigger=PropertyChanged}"/>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Style="{StaticResource PlaceHolder}" 
+                     Tag="Введите данные клиента" 
+                     Grid.Column="0"
+                     Text="{Binding DesiredClientsData, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <Button Grid.Column="1" Content="Добавить клиента"
+                    Command="{Binding OpenAddClientWindow}"/>
+            <Button Grid.Column="2" Content="Удалить клиента"/>
+
+        </Grid>
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -43,17 +65,11 @@
             </DataGrid>
 
             <Border Grid.Column="1"
-                Background="Wheat">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
+                    Background="Wheat"
+                    Width="Auto">
+                <UserControl Content="{Binding ClientControl}">
 
-                    <TextBox Text="{Binding SelectedClient.PhoneNumber}"/>
-                    <Button Grid.Column="1" Command="{Binding EditClientCommand}"/>
-
-                </Grid>
+                </UserControl>
             </Border>
 
         </Grid>

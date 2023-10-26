@@ -6,15 +6,15 @@ namespace SB_Module_10.ViewModels
 {
     public class AddClientViewModel : ViewModelBase
     {
-        private readonly IManager _manager;
-
-        public Client Client { get; private set; }
+        private readonly Manager _manager;
+        private Client _client = new Client();
+        public Client Client { get => _client; set => SetProperty(ref _client, value); }
 
         public ICommand AddClientCommand { get; set; }
 
-        public AddClientViewModel()
+        public AddClientViewModel(Manager manager)
         {
-            _manager = new Manager();
+            _manager = manager;
             AddClientCommand = new AddClientCommand(_manager, this);
         }
     }

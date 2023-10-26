@@ -43,9 +43,10 @@ namespace SB_Module_10.Infrastructure
 
         public void SaveDataToDB()
         {
-            using FileStream fs = new FileStream(_dataPath, FileMode.OpenOrCreate, FileAccess.Write);
+            using FileStream fs = new FileStream(_dataPath, FileMode.Create, FileAccess.Write);
             using StreamWriter sw = new StreamWriter(fs);
             sw.Write(JsonConvert.SerializeObject(ClientsList));
+            sw.Close();
         }
     }
 }

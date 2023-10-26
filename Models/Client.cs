@@ -13,7 +13,7 @@ namespace SB_Module_10.Models
         public string PassportNumber { get; set; }
         public string PassportData { get => $"{PassportSeries} {PassportNumber}"; }
         public DateTime DataChangedTime { get; set; }
-        public string ChangeInitiator { get; set; } 
+        public string ChangeInitiator { get; set; }
         public Dictionary<string, string> Changes { get; set; } = new Dictionary<string, string>();
 
         public Client() { }

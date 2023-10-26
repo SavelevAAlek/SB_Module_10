@@ -8,12 +8,12 @@ namespace SB_Module_10.ViewModels.Commands
     public class AddClientCommand : ICommand
     {
         public event EventHandler? CanExecuteChanged;
-        private IManager _employee;
+        private Manager _manager;
         private ViewModelBase _viewModel;
 
-        public AddClientCommand(IManager employee, ViewModelBase viewModel)
+        public AddClientCommand(Manager manager, ViewModelBase viewModel)
         {
-            _employee = employee;
+            _manager = manager;
             _viewModel = viewModel;
         }
 
@@ -21,7 +21,7 @@ namespace SB_Module_10.ViewModels.Commands
 
         public void Execute(object? parameter)
         {
-            _employee.AddClientToDB((_viewModel as AddClientViewModel).Client);
+            _manager.AddClientToDB((_viewModel as AddClientViewModel).Client);
         }
     }
 }

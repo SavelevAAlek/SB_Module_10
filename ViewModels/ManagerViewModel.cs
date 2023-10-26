@@ -15,7 +15,7 @@ namespace SB_Module_10.ViewModels
     public class ManagerViewModel : ViewModelBase
     {
         private readonly IRepository _repository;
-        private readonly IManager _manager;
+        private readonly Manager _manager;
         private ObservableCollection<Client> _clientsList;
         private string _desiredClientsData = "";
         private Client _selectedClient;
@@ -43,19 +43,22 @@ namespace SB_Module_10.ViewModels
                 if (value != null)
                 {
                     SetProperty (ref _selectedClient, value);
-                    ClientControl = new ClientViewModel(SelectedClient, this);
+                    ClientControl = new ClientViewModel(SelectedClient, this, _manager);
                 }
             }
         }
 
-        public ICommand EditClientCommand { get; set; }
+        public ICommand AddClientCommand { get; set; }
+        public ICommand DeleteClientCommand { get; set; }
+        public ICommand OpenAddClientWindow { get; set; }
 
         public ManagerViewModel()
         {
-            _manager = new Manager();
             _repository = new Repository();
+            _manager = new Manager();
             ClientsList = new ObservableCollection<Client>(_repository.GetList());
-            EditClientCommand = new EditClientCommand(_manager, this);
+            OpenAddClientWindow = new OpenAddClientWindowCommand(this, _manager);
+            DeleteClientCommand = new DeleteClientCommand(_manager, this);
         }
     }
 }

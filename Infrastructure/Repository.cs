@@ -17,12 +17,12 @@ namespace SB_Module_10.Infrastructure
             var _clients = new List<Client>();
             foreach (var client in _context.ClientsList)
             {
-                if (client.ToString().Contains(desiredClient))
+                if (client.ToString().ToLower().Contains(desiredClient) || client.ToString().Contains(desiredClient))
                     _clients.Add(client);
             }
             return _clients;
         }
-
+        
         public IEnumerable<Client> GetList() => _context.ClientsList.ToList();
     }
 }

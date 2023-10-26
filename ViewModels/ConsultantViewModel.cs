@@ -1,24 +1,17 @@
 ﻿using SB_Module_10.Infrastructure;
 using SB_Module_10.Models;
-using SB_Module_10.ViewModels.Commands;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
 
 namespace SB_Module_10.ViewModels
 {
     public class ConsultantViewModel : ViewModelBase
     {
         private readonly IRepository _repository;
-        private readonly IConsultant _consultant;
         private ObservableCollection<Client> _clientsList;
         private string _desiredClientsData = "";
         private Client _selectedClient;
         private ViewModelBase _clientControl;
+        private readonly Consultant _employee;
 
         public ViewModelBase ClientControl { get => _clientControl; set => SetProperty(ref _clientControl, value); }
         public ObservableCollection<Client> ClientsList { get => _clientsList; set => SetProperty(ref _clientsList, value); }
@@ -42,19 +35,17 @@ namespace SB_Module_10.ViewModels
                 if (value != null)
                 {
                     SetProperty(ref _selectedClient, value);
-                    ClientControl = new ClientViewModel(SelectedClient, this);
+                    ClientControl = new ClientViewModel(SelectedClient, this, _employee);
                 }
             }
         }
 
-        public ICommand EditClientCommand { get; set; }
 
         public ConsultantViewModel()
-        {
-            _consultant = new Consultant();
+        {         
             _repository = new Repository();
+            _employee = new Consultant();
             ClientsList = new ObservableCollection<Client>(_repository.GetList());
-            EditClientCommand = new EditClientCommand(_consultant, this);
         }
     }
 }

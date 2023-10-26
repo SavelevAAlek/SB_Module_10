@@ -13,6 +13,8 @@ namespace SB_Module_10.ViewModels
     {
         private ViewModelBase _selectedViewModel;
         public ViewModelBase SelectedViewModel { get => _selectedViewModel; set => SetProperty(ref _selectedViewModel, value); }
+        public bool GridV { get; set; } = false;
+
 
         public ICommand SelectRoleCommand { get; set; }
         public MainWindowViewModel() 

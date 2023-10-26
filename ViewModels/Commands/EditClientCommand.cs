@@ -7,20 +7,25 @@ namespace SB_Module_10.ViewModels.Commands
     public class EditClientCommand : ICommand
     {
         public event EventHandler? CanExecuteChanged;
-        private IConsultant _employee;
-        private ViewModelBase _viewModel;
+        private Employee _employee;
+        private ClientViewModel _clientViewModel;
+        private ViewModelBase _employeeViewModel;
 
-        public EditClientCommand(IConsultant employee, ViewModelBase viewModel)
+        public EditClientCommand(ClientViewModel clientViewModel, ViewModelBase employeeViewModel, Employee employee)
         {
+            _clientViewModel = clientViewModel;
+            _employeeViewModel = employeeViewModel;
             _employee = employee;
-            _viewModel = viewModel;
         }
 
         public bool CanExecute(object? parameter) => true;
 
         public void Execute(object? parameter)
         {
-            _employee.EditClient((_viewModel as ConsultantViewModel).SelectedClient);
+            if (_employeeViewModel is ConsultantViewModel)
+                (_employee as Consultant).EditClient(_clientViewModel.SelectedClient);
+            else if (_employeeViewModel is ManagerViewModel)
+                (_employee as Manager).EditClient(_clientViewModel.SelectedClient);
         }
     }
 }

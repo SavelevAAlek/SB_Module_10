@@ -7,25 +7,182 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="500"
              Background="Transparent">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/GridStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid>
         <StackPanel Orientation="Vertical">
-            <TextBlock Text="Фамилия:"/>
-            <TextBlock Text="{Binding SelectedClient.Surname}"/>
-            <TextBlock Text="Имя:"/>
-            <TextBlock Text="{Binding SelectedClient.Name}"/>
-            <TextBlock Text="Отчество:"/>
-            <TextBlock Text="{Binding SelectedClient.Patronymics}"/>
-            <TextBlock Text="Номер телефона:"/>
-            <TextBlock Text="{Binding SelectedClient.PhoneNumber}"/>
-            <TextBlock Text="Паспортные данные:"/>
-            <TextBlock Text="{Binding PassportData}"/>
-            <TextBlock Text="Дата последнего изменения:"/>
-            <TextBlock Text="{Binding SelectedClient.DataChangedTime}"/>
-            <TextBlock Text="Кто изменил:"/>
-            <TextBlock Text="{Binding SelectedClient.ChangeInitiator}"/>
-            <ListBox ItemsSource="{Binding SelectedClient.Changes}">
+            <TextBlock Text="Карта клиента"
+                       HorizontalAlignment="Center"
+                       FontSize="20"
+                       FontWeight="Bold"/>
+
+            <Border BorderThickness="2"
+                    BorderBrush="Aqua">
+                <Grid>
+
+                    <Grid Style="{StaticResource ManagerGrid}" Tag="{Binding GridVisibility}">
+                    <StackPanel Orientation="Vertical">
+
+                        <GroupBox Header="Основные">
+                            <StackPanel Orientation="Vertical">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Фамилия:"/>
+                                    <TextBox Text="{Binding SelectedClient.Surname}"
+                                         MinWidth="120"/>
+                                    <TextBlock Text="Имя:"/>
+                                    <TextBox Text="{Binding SelectedClient.Name}"
+                                         MinWidth="120"/>
+                                </StackPanel>
+                                
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Отчество:"/>
+                                    <TextBox Text="{Binding SelectedClient.Patronymics}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Номер телефона:"/>
+                                    <TextBox Text="{Binding SelectedClient.PhoneNumber}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Серия паспорта:"/>
+                                        <TextBox Text="{Binding SelectedClient.PassportSeries}"/>
+                                    <TextBlock Text="Номер паспорта:"/>
+                                        <TextBox Text="{Binding SelectedClient.PassportNumber}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </GroupBox>
+                        <GroupBox Header="История изменений">
+                            <StackPanel Orientation="Vertical">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Дата последнего изменения:"/>
+                                    <TextBox Text="{Binding SelectedClient.DataChangedTime}"
+                                         IsReadOnly="True"
+                                         MinWidth="120"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Инициатор изменений:"/>
+                                    <TextBox Text="{Binding SelectedClient.ChangeInitiator}"
+                                         IsReadOnly="True"
+                                         MinWidth="120"/>
+                                </StackPanel>
+                                    <ListView ItemsSource="{Binding SelectedClient.Changes}">
+                                        <ListView.View>
+                                            <GridView>
+                                                <GridView.Columns>
+                                                    <GridViewColumn Header="Тип изменений">
+                                                        <GridViewColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <TextBlock Text="{Binding Path=Key}"/>
+                                                            </DataTemplate>
+                                                        </GridViewColumn.CellTemplate>
+                                                    </GridViewColumn>
+                                                    <GridViewColumn Header="Предыдущее значение">
+                                                        <GridViewColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <TextBlock Text="{Binding Path=Value}"/>
+                                                            </DataTemplate>
+                                                        </GridViewColumn.CellTemplate>
+                                                    </GridViewColumn>
+                                                </GridView.Columns>
+                                            </GridView>
+                                        </ListView.View>
+                                    </ListView>
+
+
+                            </StackPanel>
+                        </GroupBox>
+                    </StackPanel>
+                </Grid>
+                    <Grid Style="{StaticResource ConsultantGrid}" Tag="{Binding GridVisibility}">
+                        <StackPanel Orientation="Vertical">
+
+                            <GroupBox Header="Основные">
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Фамилия:"/>
+                                        <TextBox Text="{Binding SelectedClient.Surname}"
+                                                 IsReadOnly="True"
+                                                 MinWidth="120"/>
+                                        <TextBlock Text="Имя:"/>
+                                        <TextBox Text="{Binding SelectedClient.Name}"
+                                                 IsReadOnly="True"
+                                                 MinWidth="120"/>
+                                    </StackPanel>
+                                    
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Отчество:"/>
+                                        <TextBox Text="{Binding SelectedClient.Patronymics}"
+                                                 IsReadOnly="True"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Номер телефона:"/>
+                                        <TextBox Text="{Binding SelectedClient.PhoneNumber}"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Серия паспорта:"/>
+                                        <TextBox Text="{Binding PassportSeries}"
+                                                 IsReadOnly="True"/>
+                                        <TextBlock Text="Номер паспорта:"/>
+                                        <TextBox Text="{Binding PassportNumber}"
+                                                 IsReadOnly="True"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </GroupBox>
+                            <GroupBox Header="История изменений">
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Дата последнего изменения:"/>
+                                        <TextBox Text="{Binding SelectedClient.DataChangedTime}"
+                                                 IsReadOnly="True"
+                                                 MinWidth="120"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Инициатор изменений:"/>
+                                        <TextBox Text="{Binding SelectedClient.ChangeInitiator}"
+                                                 IsReadOnly="True"
+                                                 MinWidth="120"/>
+                                    </StackPanel>
+                                    <ListView ItemsSource="{Binding SelectedClient.Changes}">
+                                        <ListView.View>
+                                            <GridView>
+                                                <GridView.Columns>
+                                                    <GridViewColumn Header="Тип изменений">
+                                                        <GridViewColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <TextBlock Text="{Binding Path=Key}"/>
+                                                            </DataTemplate>
+                                                        </GridViewColumn.CellTemplate>
+                                                    </GridViewColumn>
+                                                    <GridViewColumn Header="Предыдущее значение">
+                                                        <GridViewColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <TextBlock Text="{Binding Path=Value}"/>
+                                                            </DataTemplate>
+                                                        </GridViewColumn.CellTemplate>
+                                                    </GridViewColumn>
+                                                </GridView.Columns>
+                                            </GridView>
+                                        </ListView.View>
+                                    </ListView>
+
+
+                                </StackPanel>
+                            </GroupBox>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
                 
-            </ListBox>
+                
+            </Border>
+
+            <Button Content="Сохранить изменения" 
+                    FontSize="24" 
+                    Command="{Binding EditClientCommand}"
+                    VerticalAlignment="Bottom"/>
         </StackPanel>
     </Grid>
 </UserControl>

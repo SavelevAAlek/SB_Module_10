@@ -16,7 +16,7 @@ namespace SB_Module_10.ViewModels.Commands
             _viewModel = viewModel;
         }
 
-        public bool CanExecute(object? parameter) => true;
+        public bool CanExecute(object? parameter) => (_viewModel as ManagerViewModel).SelectedClient != null ? true : false;
 
         public void Execute(object? parameter)
         {

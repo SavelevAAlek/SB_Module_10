@@ -4,17 +4,17 @@
     {
         public void EditClient(Client newDataClient)
         {
-            var temporaryClient = new Client(_repository._context.ClientsList.Find(c => c.PassportData == newDataClient.PassportData));
+            var temporaryClient = new Client(Repository._context.ClientsList.Find(c => c.PassportData == newDataClient.PassportData));
 
             if (temporaryClient != null )
             {
                 var differences = FindDifference(temporaryClient, newDataClient);
                 var _client = new Client(this, newDataClient, differences);
-                int index = _repository._context.ClientsList.FindIndex(c => c.PassportData == newDataClient.PassportData);
+                int index = Repository._context.ClientsList.FindIndex(c => c.PassportData == newDataClient.PassportData);
                 if (index != -1 )
-                    _repository._context.ClientsList[index] = _client;
+                    Repository._context.ClientsList[index] = _client;
 
-                _repository._context.SaveDataToDB();
+                Repository._context.SaveDataToDB();
             }
         }
         
