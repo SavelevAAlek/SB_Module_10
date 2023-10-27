@@ -60,5 +60,6 @@ namespace SB_Module_10.ViewModels
             OpenAddClientWindow = new OpenAddClientWindowCommand(this, _manager);
             DeleteClientCommand = new DeleteClientCommand(_manager, this);
         }
+
     }
 }

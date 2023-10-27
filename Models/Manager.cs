@@ -10,7 +10,8 @@
 
         public void DeleteClient(Client client)
         {
-            if (client != null) Repository._context.ClientsList.Remove(client);
+            var desiredClient = Repository._context.ClientsList.Find(c => c.PassportData == client.PassportData);
+            if (client != null) Repository._context.ClientsList.Remove(desiredClient);
             Repository._context.SaveDataToDB();
         }
 

@@ -22,6 +22,6 @@ namespace SB_Module_10.ViewModels.Commands
 
         public bool CanExecute(object? parameter) => true;
 
-        public void Execute(object? parameter) => (_viewModel as ManagerViewModel).ClientControl = new AddClientViewModel(_manager);
+        public void Execute(object? parameter) => (_viewModel as ManagerViewModel).ClientControl = new AddClientViewModel(_manager, _viewModel);
     }
 }

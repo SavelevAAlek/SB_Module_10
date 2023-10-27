@@ -1,5 +1,6 @@
 ﻿using SB_Module_10.Models;
 using System;
+using System.ComponentModel;
 using System.Windows.Input;
 
 namespace SB_Module_10.ViewModels.Commands
@@ -7,6 +8,8 @@ namespace SB_Module_10.ViewModels.Commands
     public class DeleteClientCommand : ICommand
     {
         public event EventHandler? CanExecuteChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
+
         private IManager _employee;
         private ViewModelBase _viewModel;
 
@@ -20,7 +23,10 @@ namespace SB_Module_10.ViewModels.Commands
 
         public void Execute(object? parameter)
         {
-            _employee.DeleteClient((_viewModel as ManagerViewModel).SelectedClient);
+            var vm = _viewModel as ManagerViewModel;
+            _employee.DeleteClient(vm.SelectedClient);
+            vm.ClientsList.Remove(vm.SelectedClient);
         }
     }
 }
+
