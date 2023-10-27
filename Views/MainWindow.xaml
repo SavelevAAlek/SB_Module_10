@@ -23,13 +23,15 @@
             <Button Content="Изменить роль"
                     Width="100"
                     Command="{Binding SelectRoleCommand}"
-                    CommandParameter="Change role"/>
+                    CommandParameter="Change role"
+                    Visibility="Hidden"/>
         </Grid>
         <Grid Grid.Row="0" Style="{StaticResource ManagerGrid}" Tag="{Binding GridV}">
             <Button Content="Изменить роль"
                 Width="100"
                 Command="{Binding SelectRoleCommand}"
-                CommandParameter="Change role"/>
+                CommandParameter="Change role"
+                    Visibility="Visible"/>
         </Grid>
 
         <UserControl Grid.Row="1"

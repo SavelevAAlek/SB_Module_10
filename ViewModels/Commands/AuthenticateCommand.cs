@@ -18,13 +18,26 @@ namespace SB_Module_10.ViewModels.Commands
         public void Execute(object? parameter)
         {
             if (parameter.ToString() == "Manager" && _viewModel.SelectedViewModel is AuthenticationViewModel)
+            {
                 _viewModel.SelectedViewModel = new ManagerViewModel();
+                _viewModel.GridV = false;
+            }              
             else if (parameter.ToString() == "Consultant" && _viewModel.SelectedViewModel is AuthenticationViewModel)
+            {
                 _viewModel.SelectedViewModel = new ConsultantViewModel();
+                _viewModel.GridV = false;
+            }              
             else if (parameter.ToString() == "Change role" && _viewModel.SelectedViewModel is ManagerViewModel)
+            {
                 _viewModel.SelectedViewModel = new AuthenticationViewModel(_viewModel);
+                _viewModel.GridV = true;
+            }               
             else if (parameter.ToString() == "Change role" && _viewModel.SelectedViewModel is ConsultantViewModel)
+            {
                 _viewModel.SelectedViewModel = new AuthenticationViewModel(_viewModel);
+                _viewModel.GridV = true;
+            }
+                
         }
     }
 }

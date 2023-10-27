@@ -33,7 +33,8 @@
 
             <Button Grid.Column="1" Content="Добавить клиента"
                     Command="{Binding OpenAddClientWindow}"/>
-            <Button Grid.Column="2" Content="Удалить клиента"/>
+            <Button Grid.Column="2" Content="Удалить клиента"
+                    Command="{Binding DeleteClientCommand}"/>
 
         </Grid>
 
