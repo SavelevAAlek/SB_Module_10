@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Data;
 
 namespace SB_Module_10.Models
 {
@@ -36,6 +37,6 @@ namespace SB_Module_10.Models
         }
 
         public override string ToString() => $"{Surname}#{Name}#{Patronymics}#{PhoneNumber}#{Patronymics}";
-
+        public string ToString(IValueConverter converter) => $"{Surname} {Name} {Patronymics}";
     }
 }

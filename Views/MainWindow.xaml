@@ -4,34 +4,39 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SB_Module_10"
+        xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="500" Width="800">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Styles/GridStyles.xaml"/>
+                <ResourceDictionary Source="/Styles/ButtonStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
+    <Window.Background>
+        <ImageBrush ImageSource="/Images/mwbackground.jpg" Opacity="0.7"/>
+    </Window.Background>
     <Grid>
+        
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="30"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Style="{StaticResource ConsultantGrid}" Tag="{Binding GridV}">
-            <Button Content="Изменить роль"
-                    Width="100"
+        <Grid Grid.Row="0" Style="{StaticResource VisibleGrid}" Tag="{Binding GridV}"/>
+        
+        <Grid Grid.Row="0" Style="{StaticResource InvisibleGrid}" Tag="{Binding GridV}">
+            <Button Width="140"
                     Command="{Binding SelectRoleCommand}"
                     CommandParameter="Change role"
-                    Visibility="Hidden"/>
-        </Grid>
-        <Grid Grid.Row="0" Style="{StaticResource ManagerGrid}" Tag="{Binding GridV}">
-            <Button Content="Изменить роль"
-                Width="100"
-                Command="{Binding SelectRoleCommand}"
-                CommandParameter="Change role"
-                    Visibility="Visible"/>
+                    Style="{StaticResource ChangeRoleBtn}">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Сменить роль"/>
+                    <fa:IconImage Icon="RightToBracket" Width="15" Margin="10,0,0,0"/>
+                </StackPanel>
+            </Button>
         </Grid>
 
         <UserControl Grid.Row="1"

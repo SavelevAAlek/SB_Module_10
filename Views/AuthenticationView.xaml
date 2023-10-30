@@ -6,25 +6,54 @@
              xmlns:local="clr-namespace:SB_Module_10.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/ButtonStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-        <Button Grid.Column="0"
-                Content="Consultant"
+        <TextBlock Text="Добро пожаловать! Пожалуйста, выберите уровень доступа"
+                   VerticalAlignment="Bottom"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,-15"
+                   Foreground="#0A608A"
+                   FontSize="24"
+                   FontFamily="Bahnschrift Semibold Condensed"/>
+
+        <Grid Grid.Row="1">
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            <Button Grid.Column="0"
+                Content="Консультант"
                 Command="{Binding SelectRoleCommand}"
                 CommandParameter="Consultant"
                 Height="50"
-                Width="120"/>
-
-        <Button Grid.Column="1"
-                Content="Manager"
+                Width="120"
+                Style="{StaticResource DefaultButton}"/>
+            
+            <Button Grid.Column="1"
+                Content="Менеджер"
                 Command="{Binding SelectRoleCommand}"
                 CommandParameter="Manager"
                 Height="50"
-                Width="120"/>
+                Width="120"
+                Style="{StaticResource DefaultButton}"/>
+            
+        </Grid>
+        
+
         
     </Grid>
 </UserControl>

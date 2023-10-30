@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:cnv="clr-namespace:SB_Module_10.ViewModels"
              xmlns:local="clr-namespace:SB_Module_10.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
@@ -11,12 +12,13 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Styles/TextBoxPlaceholder.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <cnv:ClientToDataGridConverter x:Key="ClientCNV"/>
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="0"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
@@ -39,14 +41,12 @@
                       ColumnWidth="*"
                       HeadersVisibility="Column">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Surname"
-                                        Binding="{Binding Surname}"/>
-                    <DataGridTextColumn Header="Name"
-                                        Binding="{Binding Name}"/>
-                    <DataGridTextColumn Header="Patronymics"
-                                        Binding="{Binding Patronymics}"/>
-                    <DataGridTextColumn Header="Phone Number"
-                                        Binding="{Binding PhoneNumber}"/>
+                    <DataGridTextColumn Header="Клиенты"
+                                        Binding="{Binding Converter={StaticResource ClientCNV}}"/>
+
+                    <DataGridTextColumn Header="Номер телефона"
+                                        Binding="{Binding PhoneNumber}"
+                                        MaxWidth="120"/>
                 </DataGrid.Columns>
             </DataGrid>
 

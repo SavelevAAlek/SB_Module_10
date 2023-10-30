@@ -1,13 +1,7 @@
 ﻿using SB_Module_10.Infrastructure;
 using SB_Module_10.Models;
 using SB_Module_10.ViewModels.Commands;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace SB_Module_10.ViewModels

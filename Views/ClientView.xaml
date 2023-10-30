@@ -25,7 +25,7 @@
                     BorderBrush="Aqua">
                 <Grid>
 
-                    <Grid Style="{StaticResource ManagerGrid}" Tag="{Binding GridVisibility}">
+                    <Grid Style="{StaticResource InvisibleGrid}" Tag="{Binding GridVisibility}">
                     <StackPanel Orientation="Vertical">
 
                         <GroupBox Header="Основные">
@@ -97,7 +97,7 @@
                         </GroupBox>
                     </StackPanel>
                 </Grid>
-                    <Grid Style="{StaticResource ConsultantGrid}" Tag="{Binding GridVisibility}">
+                    <Grid Style="{StaticResource VisibleGrid}" Tag="{Binding GridVisibility}">
                         <StackPanel Orientation="Vertical">
 
                             <GroupBox Header="Основные">
