@@ -5,20 +5,35 @@
              xmlns:v="clr-namespace:SB_Module_10.Views"
              StartupUri="Views/MainWindow.xaml">
     <Application.Resources>
-        <DataTemplate DataType="{x:Type vm:AuthenticationViewModel}">
-            <v:AuthenticationView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:ManagerViewModel}">
-            <v:ManagerView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:ConsultantViewModel}">
-            <v:ConsultantView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:ClientViewModel}">
-            <v:ClientView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:AddClientViewModel}">
-            <v:AddClientView/>
-        </DataTemplate>
+        
+        <ResourceDictionary>
+            
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/GridStyles.xaml"/>
+                <ResourceDictionary Source="/Styles/TextBoxPlaceholder.xaml"/>
+                <ResourceDictionary Source="/Styles/ButtonStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            
+            <vm:ClientToDataGridConverter x:Key="ClientCNV"/>
+            
+            <DataTemplate DataType="{x:Type vm:AuthenticationViewModel}">
+                <v:AuthenticationView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:ManagerViewModel}">
+                <v:ManagerView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:ConsultantViewModel}">
+                <v:ConsultantView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:ClientViewModel}">
+                <v:ClientView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:AddClientViewModel}">
+                <v:AddClientView/>
+            </DataTemplate>
+            
+        </ResourceDictionary>
+        
+        
     </Application.Resources>
 </Application>

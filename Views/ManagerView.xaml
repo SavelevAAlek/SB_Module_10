@@ -6,14 +6,7 @@
              xmlns:local="clr-namespace:SB_Module_10.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <UserControl.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Styles/TextBoxPlaceholder.xaml"/>
-                <ResourceDictionary Source="/Styles/ButtonStyles.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </UserControl.Resources>
+   
     <Border BorderThickness="0,2,0,0" BorderBrush="#69CCFA">
         <Grid>
             <Grid.RowDefinitions>

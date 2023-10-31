@@ -7,13 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="500"
              Background="Transparent">
-    <UserControl.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Styles/GridStyles.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </UserControl.Resources>
+    
     <Grid>
         <StackPanel Orientation="Vertical">
             <TextBlock Text="Карта клиента"
