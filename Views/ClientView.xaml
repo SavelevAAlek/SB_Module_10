@@ -15,8 +15,8 @@
                        FontSize="20"
                        FontWeight="Bold"/>
 
-            <Border BorderThickness="2"
-                    BorderBrush="Aqua">
+            <Border BorderThickness="0,2,0,0"
+                    BorderBrush="Violet">
                 <Grid>
 
                     <Grid Style="{StaticResource InvisibleGrid}" Tag="{Binding GridVisibility}">
@@ -34,65 +34,53 @@
                             
                             <StackPanel Orientation="Vertical">
                                 
-                                <DockPanel Margin="10,10,10,0" LastChildFill="True">
-                                    <TextBlock Text="Фамилия:"                                          
-                                               Foreground="#FF137FDC"
-                                               FontFamily="Arial"
-                                               FontSize="14"
-                                               FontWeight="SemiBold"/>
-                                    <TextBox Text="{Binding SelectedClient.Surname}"
-                                             Margin="10,0,0,0"/>
-                                   
+                                <DockPanel Margin="10,10,10,0" LastChildFill="True" Height="20">
+                                    <TextBlock Text="Фамилия:" 
+                                               Style="{StaticResource UserTextBlockInfo}"/>
+                                    <Border Style="{StaticResource UserFieldsBorder}">                               
+                                        <TextBox Text="{Binding SelectedClient.Surname}"
+                                                 Style="{StaticResource UserTextBoxInfo}"/>
+                                    </Border>                                  
                                 </DockPanel>
-                                
-                                <DockPanel Margin="10,10,10,0" LastChildFill="True">
-                                    <TextBlock Text="Имя:"                                          
-                                               Foreground="#FF137FDC"
-                                               FontFamily="Arial"
-                                               FontSize="14"
-                                               FontWeight="SemiBold"/>
-                                    <TextBox Text="{Binding SelectedClient.Name}"
-                                             Margin="10,0,0,0"/>
+                                <DockPanel Margin="10,10,10,0" LastChildFill="True" Height="20">
+                                    <TextBlock Text="Имя:" 
+                                               Style="{StaticResource UserTextBlockInfo}"/>
+                                    <Border Style="{StaticResource UserFieldsBorder}">                               
+                                        <TextBox Text="{Binding SelectedClient.Name}"
+                                                 Style="{StaticResource UserTextBoxInfo}"/>
+                                    </Border>                                  
                                 </DockPanel>
-
-                                 <DockPanel Margin="10,10,10,0" LastChildFill="True">
-                                     <TextBlock Text="Отчество:"                                          
-                                                Foreground="#FF137FDC"
-                                                FontFamily="Arial"
-                                                FontSize="14"
-                                                FontWeight="SemiBold"/>
-                                     <TextBox Text="{Binding SelectedClient.Patronymics}"
-                                              Margin="10,0,0,0"/>
-                                 </DockPanel>
-
-                                <DockPanel Margin="10,10,10,0" LastChildFill="True">
-                                    <TextBlock Text="Номер телефона:"                                          
-                                               Foreground="#FF137FDC"
-                                               FontFamily="Arial"
-                                               FontSize="14"
-                                               FontWeight="SemiBold"/>
-                                    <TextBox Text="{Binding SelectedClient.PhoneNumber}"
-                                             Margin="10,0,0,0"/>
+                                <DockPanel Margin="10,10,10,0" LastChildFill="True" Height="20">
+                                    <TextBlock Text="Отчество:" 
+                                               Style="{StaticResource UserTextBlockInfo}"/>
+                                    <Border Style="{StaticResource UserFieldsBorder}">                               
+                                        <TextBox Text="{Binding SelectedClient.Patronymics}"
+                                                 Style="{StaticResource UserTextBoxInfo}"/>
+                                    </Border>                                  
                                 </DockPanel>
-                                
-                                <DockPanel Margin="10,10,10,0" LastChildFill="True">
-                                    <TextBlock Text="Серия паспорта:"                                          
-                                               Foreground="#FF137FDC"
-                                               FontFamily="Arial"
-                                               FontSize="14"
-                                               FontWeight="SemiBold"/>
-                                    <TextBox Text="{Binding SelectedClient.PassportSeries}"
-                                             Margin="10,0,0,0"/>
+                                <DockPanel Margin="10,10,10,0" LastChildFill="True" Height="20">
+                                    <TextBlock Text="Телефон:" 
+                                               Style="{StaticResource UserTextBlockInfo}"/>
+                                    <Border Style="{StaticResource UserFieldsBorder}">                               
+                                        <TextBox Text="{Binding SelectedClient.PhoneNumber}"
+                                                 Style="{StaticResource UserTextBoxInfo}"/>
+                                    </Border>                                  
                                 </DockPanel>
-                                
-                                <DockPanel Margin="10,10,10,0" LastChildFill="True">
-                                    <TextBlock Text="Номер паспорта:"                                          
-                                               Foreground="#FF137FDC"
-                                               FontFamily="Arial"
-                                               FontSize="14"
-                                               FontWeight="SemiBold"/>
-                                    <TextBox Text="{Binding SelectedClient.PassportNumber}"
-                                             Margin="10,0,0,10"/>
+                                <DockPanel Margin="10,10,10,0" LastChildFill="True" Height="20">
+                                    <TextBlock Text="Серия паспорта:" 
+                                               Style="{StaticResource UserTextBlockInfo}"/>
+                                    <Border Style="{StaticResource UserFieldsBorder}">                               
+                                        <TextBox Text="{Binding SelectedClient.PassportSeries}"
+                                                 Style="{StaticResource UserTextBoxInfo}"/>
+                                    </Border>                                  
+                                </DockPanel>
+                                <DockPanel Margin="10,10,10,0" LastChildFill="True" Height="20">
+                                    <TextBlock Text="Номер Паспорта:" 
+                                               Style="{StaticResource UserTextBlockInfo}"/>
+                                    <Border Style="{StaticResource UserFieldsBorder}">                               
+                                        <TextBox Text="{Binding SelectedClient.PassportNumber}"
+                                                 Style="{StaticResource UserTextBoxInfo}"/>
+                                    </Border>                                  
                                 </DockPanel>
                                 
                             </StackPanel>
@@ -113,32 +101,31 @@
                                 
                                 <DockPanel Margin="10,10,10,0" LastChildFill="True">
                                     <TextBlock Text="Дата последнего изменения:"                                          
-                                               Foreground="#FF137FDC"
-                                               FontFamily="Arial"
-                                               FontSize="14"
-                                               FontWeight="SemiBold"/>
-                                    <TextBox Text="{Binding SelectedClient.DataChangedTime}"
-                                             Margin="10,0,0,0"/>
+                                               Style="{StaticResource UserTextBlockInfo}"/>
+                                    <TextBox Text="{Binding SelectedClient.DataChangedTime,
+                                        Converter={StaticResource DateTimeCNV}}"
+                                             Style="{StaticResource UserTextBoxInfo}"/>
                                 </DockPanel>
                                 
                                 <DockPanel Margin="10,10,10,0" LastChildFill="True">
                                     <TextBlock Text="Инициатор изменений:"                                          
-                                               Foreground="#FF137FDC"
-                                               FontFamily="Arial"
-                                               FontSize="14"
-                                               FontWeight="SemiBold"/>
-                                        <TextBox Text="{Binding SelectedClient.ChangeInitiator}"
-                                             Margin="10,0,0,0"/>
+                                               Style="{StaticResource UserTextBlockInfo}"/>
+                                    <TextBox Text="{Binding SelectedClient.ChangeInitiator}"
+                                             Style="{StaticResource UserTextBoxInfo}"/>
                                 </DockPanel>
-                                
-                                    <ListView ItemsSource="{Binding SelectedClient.Changes}">
+
+                                 <ListView ItemsSource="{Binding SelectedClient.Changes}">
                                         <ListView.View>
                                             <GridView>
                                                 <GridView.Columns>
                                                     <GridViewColumn Header="Тип изменений">
                                                         <GridViewColumn.CellTemplate>
                                                             <DataTemplate>
-                                                                <TextBlock Text="{Binding Path=Key}"/>
+                                                                <TextBlock Text="{Binding Path=Key}"
+                                                                           Foreground="#FF137FDC"
+                                                                            FontFamily="Arial"
+                                                                            FontSize="14"
+                                                                            FontWeight="SemiBold"/>
                                                             </DataTemplate>
                                                         </GridViewColumn.CellTemplate>
                                                     </GridViewColumn>

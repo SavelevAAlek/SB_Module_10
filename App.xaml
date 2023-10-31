@@ -12,9 +12,11 @@
                 <ResourceDictionary Source="/Styles/GridStyles.xaml"/>
                 <ResourceDictionary Source="/Styles/TextBoxPlaceholder.xaml"/>
                 <ResourceDictionary Source="/Styles/ButtonStyles.xaml"/>
+                <ResourceDictionary Source="/Styles/UserInfoStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <vm:ClientToDataGridConverter x:Key="ClientCNV"/>
+            <vm:DateTImeConverter x:Key="DateTimeCNV"/>
 
             <DataTemplate DataType="{x:Type vm:AuthenticationViewModel}">
                 <v:AuthenticationView/>
