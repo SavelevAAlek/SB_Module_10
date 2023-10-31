@@ -69,7 +69,7 @@
                 </DataGrid>
 
                 <Border Grid.Column="1"
-                    Background="Wheat"
+                    Background="GhostWhite"
                     Width="Auto">
                     <UserControl Content="{Binding ClientControl}">
 

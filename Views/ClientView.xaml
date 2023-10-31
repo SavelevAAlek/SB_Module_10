@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="500"
              Background="Transparent">
-    
+
     <Grid>
         <StackPanel Orientation="Vertical">
             <TextBlock Text="Карта клиента"
@@ -20,49 +20,117 @@
                 <Grid>
 
                     <Grid Style="{StaticResource InvisibleGrid}" Tag="{Binding GridVisibility}">
+                        
                     <StackPanel Orientation="Vertical">
-
-                        <GroupBox Header="Основные">
+                        <GroupBox BorderThickness="2" BorderBrush="#FF137FDC">
+                            
+                                <GroupBox.Header>
+                                    <TextBlock Text="Основная информация"
+                                               Foreground="#FF137FDC"
+                                               FontFamily="Arial"
+                                               FontSize="16"
+                                               FontWeight="Black"/>
+                                </GroupBox.Header>
+                            
                             <StackPanel Orientation="Vertical">
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Фамилия:"/>
-                                    <TextBox Text="{Binding SelectedClient.Surname}"
-                                         MinWidth="120"/>
-                                    <TextBlock Text="Имя:"/>
-                                    <TextBox Text="{Binding SelectedClient.Name}"
-                                         MinWidth="120"/>
-                                </StackPanel>
                                 
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Отчество:"/>
-                                    <TextBox Text="{Binding SelectedClient.Patronymics}"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Номер телефона:"/>
-                                    <TextBox Text="{Binding SelectedClient.PhoneNumber}"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Серия паспорта:"/>
-                                        <TextBox Text="{Binding SelectedClient.PassportSeries}"/>
-                                    <TextBlock Text="Номер паспорта:"/>
-                                        <TextBox Text="{Binding SelectedClient.PassportNumber}"/>
-                                </StackPanel>
+                                <DockPanel Margin="10,10,10,0" LastChildFill="True">
+                                    <TextBlock Text="Фамилия:"                                          
+                                               Foreground="#FF137FDC"
+                                               FontFamily="Arial"
+                                               FontSize="14"
+                                               FontWeight="SemiBold"/>
+                                    <TextBox Text="{Binding SelectedClient.Surname}"
+                                             Margin="10,0,0,0"/>
+                                   
+                                </DockPanel>
+                                
+                                <DockPanel Margin="10,10,10,0" LastChildFill="True">
+                                    <TextBlock Text="Имя:"                                          
+                                               Foreground="#FF137FDC"
+                                               FontFamily="Arial"
+                                               FontSize="14"
+                                               FontWeight="SemiBold"/>
+                                    <TextBox Text="{Binding SelectedClient.Name}"
+                                             Margin="10,0,0,0"/>
+                                </DockPanel>
+
+                                 <DockPanel Margin="10,10,10,0" LastChildFill="True">
+                                     <TextBlock Text="Отчество:"                                          
+                                                Foreground="#FF137FDC"
+                                                FontFamily="Arial"
+                                                FontSize="14"
+                                                FontWeight="SemiBold"/>
+                                     <TextBox Text="{Binding SelectedClient.Patronymics}"
+                                              Margin="10,0,0,0"/>
+                                 </DockPanel>
+
+                                <DockPanel Margin="10,10,10,0" LastChildFill="True">
+                                    <TextBlock Text="Номер телефона:"                                          
+                                               Foreground="#FF137FDC"
+                                               FontFamily="Arial"
+                                               FontSize="14"
+                                               FontWeight="SemiBold"/>
+                                    <TextBox Text="{Binding SelectedClient.PhoneNumber}"
+                                             Margin="10,0,0,0"/>
+                                </DockPanel>
+                                
+                                <DockPanel Margin="10,10,10,0" LastChildFill="True">
+                                    <TextBlock Text="Серия паспорта:"                                          
+                                               Foreground="#FF137FDC"
+                                               FontFamily="Arial"
+                                               FontSize="14"
+                                               FontWeight="SemiBold"/>
+                                    <TextBox Text="{Binding SelectedClient.PassportSeries}"
+                                             Margin="10,0,0,0"/>
+                                </DockPanel>
+                                
+                                <DockPanel Margin="10,10,10,0" LastChildFill="True">
+                                    <TextBlock Text="Номер паспорта:"                                          
+                                               Foreground="#FF137FDC"
+                                               FontFamily="Arial"
+                                               FontSize="14"
+                                               FontWeight="SemiBold"/>
+                                    <TextBox Text="{Binding SelectedClient.PassportNumber}"
+                                             Margin="10,0,0,10"/>
+                                </DockPanel>
+                                
                             </StackPanel>
+                            
                         </GroupBox>
-                        <GroupBox Header="История изменений">
+                        
+                        <GroupBox BorderThickness="2" BorderBrush="#FF137FDC">
+                            
+                            <GroupBox.Header>
+                                <TextBlock Text="История изменений"
+                                           Foreground="#FF137FDC"
+                                           FontFamily="Arial"
+                                           FontSize="16"
+                                           FontWeight="Black"/>
+                            </GroupBox.Header>
+                            
                             <StackPanel Orientation="Vertical">
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Дата последнего изменения:"/>
+                                
+                                <DockPanel Margin="10,10,10,0" LastChildFill="True">
+                                    <TextBlock Text="Дата последнего изменения:"                                          
+                                               Foreground="#FF137FDC"
+                                               FontFamily="Arial"
+                                               FontSize="14"
+                                               FontWeight="SemiBold"/>
                                     <TextBox Text="{Binding SelectedClient.DataChangedTime}"
-                                         IsReadOnly="True"
-                                         MinWidth="120"/>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Инициатор изменений:"/>
-                                    <TextBox Text="{Binding SelectedClient.ChangeInitiator}"
-                                         IsReadOnly="True"
-                                         MinWidth="120"/>
-                                </StackPanel>
+                                             Margin="10,0,0,0"/>
+                                </DockPanel>
+                                
+                                <DockPanel Margin="10,10,10,0" LastChildFill="True">
+                                    <TextBlock Text="Инициатор изменений:"                                          
+                                               Foreground="#FF137FDC"
+                                               FontFamily="Arial"
+                                               FontSize="14"
+                                               FontWeight="SemiBold"/>
+                                        <TextBox Text="{Binding SelectedClient.ChangeInitiator}"
+                                             Margin="10,0,0,0"/>
+                                </DockPanel>
+                                
                                     <ListView ItemsSource="{Binding SelectedClient.Changes}">
                                         <ListView.View>
                                             <GridView>

@@ -13,9 +13,9 @@
                 <ResourceDictionary Source="/Styles/TextBoxPlaceholder.xaml"/>
                 <ResourceDictionary Source="/Styles/ButtonStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-            
+
             <vm:ClientToDataGridConverter x:Key="ClientCNV"/>
-            
+
             <DataTemplate DataType="{x:Type vm:AuthenticationViewModel}">
                 <v:AuthenticationView/>
             </DataTemplate>
@@ -33,7 +33,7 @@
             </DataTemplate>
             
         </ResourceDictionary>
-        
+      
         
     </Application.Resources>
 </Application>
