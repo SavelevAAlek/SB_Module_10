@@ -25,6 +25,7 @@ namespace SB_Module_10.ViewModels.Commands
         {
             _manager.AddClientToDB((_viewModel as AddClientViewModel).Client);
             _managerVM.ClientsList.Add((_viewModel as AddClientViewModel).Client);
+            _managerVM.ClientControl = new ClientViewModel(_viewModel, _manager);
         }
     }
 }

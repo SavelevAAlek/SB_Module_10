@@ -3,92 +3,96 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:SB_Module_10.Views"
+             xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="500"
              Background="Transparent">
 
     <Grid>
         <StackPanel Orientation="Vertical">
-            <TextBlock Text="Карта клиента"
-                       HorizontalAlignment="Center"
-                       FontSize="20"
-                       FontWeight="Bold"/>
+            <Border Style="{StaticResource UserFieldsBorder}"
+                    Margin="0"
+                    CornerRadius="0,20,0,0">
+                <TextBlock Text="Карта выбранного клиента"
+                           Style="{StaticResource UserTextBlockInfo}"
+                           FontSize="14"
+                           HorizontalAlignment="Center"
+                           Padding="5"/>
+            </Border>
 
-            <Border BorderThickness="0,2,0,0"
-                    BorderBrush="Violet">
                 <Grid>
 
                     <Grid Style="{StaticResource InvisibleGrid}" Tag="{Binding GridVisibility}">
                         
                     <StackPanel Orientation="Vertical">
+
                         <GroupBox BorderThickness="2" BorderBrush="#FF137FDC">
-                            
-                                <GroupBox.Header>
-                                    <TextBlock Text="Основная информация"
+
+                            <GroupBox.Header>
+                                <TextBlock Text="Основная информация"
                                                Foreground="#FF137FDC"
                                                FontFamily="Arial"
                                                FontSize="16"
                                                FontWeight="Black"/>
-                                </GroupBox.Header>
-                            
+                            </GroupBox.Header>
+
                             <StackPanel Orientation="Vertical">
-                                
+
                                 <DockPanel Margin="10,10,10,0" LastChildFill="True" Height="20">
                                     <TextBlock Text="Фамилия:" 
                                                Style="{StaticResource UserTextBlockInfo}"/>
-                                    <Border Style="{StaticResource UserFieldsBorder}">                               
+                                    <Border Style="{StaticResource UserFieldsBorder}">
                                         <TextBox Text="{Binding SelectedClient.Surname}"
                                                  Style="{StaticResource UserTextBoxInfo}"/>
-                                    </Border>                                  
+                                    </Border>
                                 </DockPanel>
                                 <DockPanel Margin="10,10,10,0" LastChildFill="True" Height="20">
                                     <TextBlock Text="Имя:" 
                                                Style="{StaticResource UserTextBlockInfo}"/>
-                                    <Border Style="{StaticResource UserFieldsBorder}">                               
+                                    <Border Style="{StaticResource UserFieldsBorder}">
                                         <TextBox Text="{Binding SelectedClient.Name}"
                                                  Style="{StaticResource UserTextBoxInfo}"/>
-                                    </Border>                                  
+                                    </Border>
                                 </DockPanel>
                                 <DockPanel Margin="10,10,10,0" LastChildFill="True" Height="20">
                                     <TextBlock Text="Отчество:" 
                                                Style="{StaticResource UserTextBlockInfo}"/>
-                                    <Border Style="{StaticResource UserFieldsBorder}">                               
+                                    <Border Style="{StaticResource UserFieldsBorder}">
                                         <TextBox Text="{Binding SelectedClient.Patronymics}"
                                                  Style="{StaticResource UserTextBoxInfo}"/>
-                                    </Border>                                  
+                                    </Border>
                                 </DockPanel>
                                 <DockPanel Margin="10,10,10,0" LastChildFill="True" Height="20">
                                     <TextBlock Text="Телефон:" 
                                                Style="{StaticResource UserTextBlockInfo}"/>
-                                    <Border Style="{StaticResource UserFieldsBorder}">                               
+                                    <Border Style="{StaticResource UserFieldsBorder}">
                                         <TextBox Text="{Binding SelectedClient.PhoneNumber}"
                                                  Style="{StaticResource UserTextBoxInfo}"/>
-                                    </Border>                                  
+                                    </Border>
                                 </DockPanel>
                                 <DockPanel Margin="10,10,10,0" LastChildFill="True" Height="20">
                                     <TextBlock Text="Серия паспорта:" 
                                                Style="{StaticResource UserTextBlockInfo}"/>
-                                    <Border Style="{StaticResource UserFieldsBorder}">                               
+                                    <Border Style="{StaticResource UserFieldsBorder}">
                                         <TextBox Text="{Binding SelectedClient.PassportSeries}"
                                                  Style="{StaticResource UserTextBoxInfo}"/>
-                                    </Border>                                  
+                                    </Border>
                                 </DockPanel>
                                 <DockPanel Margin="10,10,10,0" LastChildFill="True" Height="20">
                                     <TextBlock Text="Номер Паспорта:" 
                                                Style="{StaticResource UserTextBlockInfo}"/>
-                                    <Border Style="{StaticResource UserFieldsBorder}">                               
+                                    <Border Style="{StaticResource UserFieldsBorder}">
                                         <TextBox Text="{Binding SelectedClient.PassportNumber}"
                                                  Style="{StaticResource UserTextBoxInfo}"/>
-                                    </Border>                                  
+                                    </Border>
                                 </DockPanel>
-                                
+
                             </StackPanel>
-                            
+
                         </GroupBox>
-                        
+
                         <GroupBox BorderThickness="2" BorderBrush="#FF137FDC">
-                            
+        
                             <GroupBox.Header>
                                 <TextBlock Text="История изменений"
                                            Foreground="#FF137FDC"
@@ -96,140 +100,238 @@
                                            FontSize="16"
                                            FontWeight="Black"/>
                             </GroupBox.Header>
-                            
+        
                             <StackPanel Orientation="Vertical">
-                                
+            
                                 <DockPanel Margin="10,10,10,0" LastChildFill="True">
                                     <TextBlock Text="Дата последнего изменения:"                                          
                                                Style="{StaticResource UserTextBlockInfo}"/>
-                                    <TextBox Text="{Binding SelectedClient.DataChangedTime,
-                                        Converter={StaticResource DateTimeCNV}}"
+                                    <TextBox Text="{Binding SelectedClient.DataChangedTime, Converter={StaticResource DateTimeCNV}}"
                                              Style="{StaticResource UserTextBoxInfo}"/>
                                 </DockPanel>
-                                
-                                <DockPanel Margin="10,10,10,0" LastChildFill="True">
+            
+                                <DockPanel Margin="10,10,10,0" LastChildFill="False" Height="40">
                                     <TextBlock Text="Инициатор изменений:"                                          
                                                Style="{StaticResource UserTextBlockInfo}"/>
                                     <TextBox Text="{Binding SelectedClient.ChangeInitiator}"
                                              Style="{StaticResource UserTextBoxInfo}"/>
+                                    <Button Width="25" Height="25" Background="Transparent" BorderThickness="0" Margin="10,0,0,0">
+                                        <StackPanel>
+                                            <fa:IconImage Icon="CircleInfo" Foreground="Violet"/>
+                                        </StackPanel>
+                                        <Button.ToolTip>
+                                            <ToolTip>
+                                                <ListView ItemsSource="{Binding SelectedClient.Changes}" BorderThickness="0" Background="Transparent">
+                                                    <ListView.View>
+                                                        <GridView>
+                                                            <GridViewColumn Width="150">
+                                                                <GridViewColumnHeader Background="Transparent" BorderThickness="0">
+                                                                    <TextBlock Text="Тип изменений"
+                                                                             Background="Transparent"
+                                                                             Foreground="Blue"
+                                                                             FontSize="12"/>
+                                                                </GridViewColumnHeader>
+                                                                <GridViewColumn.CellTemplate>
+                                                                    <DataTemplate>
+                                                                        <TextBlock Text="{Binding Path=Key}"
+                                                                                   Background="Transparent"
+                                                                                   Foreground="Black"
+                                                                                   FontSize="10"/>
+                                                                    </DataTemplate>
+                                                                </GridViewColumn.CellTemplate>
+                                                            </GridViewColumn>
+                                                            <GridViewColumn Width="150">
+                                                                <GridViewColumnHeader>
+                                                                    <TextBlock Text="До изменения"
+                                                                             Background="Transparent"
+                                                                             Foreground="Blue"
+                                                                             FontSize="12"/>
+                                                                </GridViewColumnHeader>
+                                                                <GridViewColumn.CellTemplate>
+                                                                    <DataTemplate>
+                                                                        <TextBlock Text="{Binding Path=Value}"
+                                                                                   Background="Transparent"
+                                                                                   Foreground="Black"
+                                                                                   FontSize="10"/>
+                                                                    </DataTemplate>
+                                                                </GridViewColumn.CellTemplate>
+                                                            </GridViewColumn>
+                                                        </GridView>
+                                                    </ListView.View>
+                                                </ListView>
+                                            </ToolTip>
+                                        </Button.ToolTip>
+                
+                                    </Button>
                                 </DockPanel>
 
-                                 <ListView ItemsSource="{Binding SelectedClient.Changes}">
-                                        <ListView.View>
-                                            <GridView>
-                                                <GridView.Columns>
-                                                    <GridViewColumn Header="Тип изменений">
-                                                        <GridViewColumn.CellTemplate>
-                                                            <DataTemplate>
-                                                                <TextBlock Text="{Binding Path=Key}"
-                                                                           Foreground="#FF137FDC"
-                                                                            FontFamily="Arial"
-                                                                            FontSize="14"
-                                                                            FontWeight="SemiBold"/>
-                                                            </DataTemplate>
-                                                        </GridViewColumn.CellTemplate>
-                                                    </GridViewColumn>
-                                                    <GridViewColumn Header="Предыдущее значение">
-                                                        <GridViewColumn.CellTemplate>
-                                                            <DataTemplate>
-                                                                <TextBlock Text="{Binding Path=Value}"/>
-                                                            </DataTemplate>
-                                                        </GridViewColumn.CellTemplate>
-                                                    </GridViewColumn>
-                                                </GridView.Columns>
-                                            </GridView>
-                                        </ListView.View>
-                                    </ListView>
+        
 
-
-                            </StackPanel>
-                        </GroupBox>
+                                </StackPanel>
+                            </GroupBox>
+                        
                     </StackPanel>
+                        
                 </Grid>
                     <Grid Style="{StaticResource VisibleGrid}" Tag="{Binding GridVisibility}">
+                        
                         <StackPanel Orientation="Vertical">
-
-                            <GroupBox Header="Основные">
+    
+                            <GroupBox BorderThickness="2" BorderBrush="#FF137FDC">
+        
+                                    <GroupBox.Header>
+                                        <TextBlock Text="Основная информация"
+                                                   Foreground="#FF137FDC"
+                                                   FontFamily="Arial"
+                                                   FontSize="16"
+                                                   FontWeight="Black"/>
+                                    </GroupBox.Header>
+        
                                 <StackPanel Orientation="Vertical">
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="Фамилия:"/>
-                                        <TextBox Text="{Binding SelectedClient.Surname}"
-                                                 IsReadOnly="True"
-                                                 MinWidth="120"/>
-                                        <TextBlock Text="Имя:"/>
-                                        <TextBox Text="{Binding SelectedClient.Name}"
-                                                 IsReadOnly="True"
-                                                 MinWidth="120"/>
-                                    </StackPanel>
-                                    
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="Отчество:"/>
-                                        <TextBox Text="{Binding SelectedClient.Patronymics}"
-                                                 IsReadOnly="True"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="Номер телефона:"/>
-                                        <TextBox Text="{Binding SelectedClient.PhoneNumber}"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="Серия паспорта:"/>
-                                        <TextBox Text="{Binding PassportSeries}"
-                                                 IsReadOnly="True"/>
-                                        <TextBlock Text="Номер паспорта:"/>
-                                        <TextBox Text="{Binding PassportNumber}"
-                                                 IsReadOnly="True"/>
-                                    </StackPanel>
+            
+                                    <DockPanel Margin="10,10,10,0" LastChildFill="True" Height="20">
+                                        <TextBlock Text="Фамилия:" 
+                                                   Style="{StaticResource UserTextBlockInfo}"/>
+                                        <Border Style="{StaticResource UserFieldsBorder}">                               
+                                            <TextBlock Text="{Binding SelectedClient.Surname}"
+                                                     Style="{StaticResource UserTextBlockInfoAsConsultant}"/>
+                                        </Border>                                  
+                                    </DockPanel>
+                                    <DockPanel Margin="10,10,10,0" LastChildFill="True" Height="20">
+                                        <TextBlock Text="Имя:" 
+                                                   Style="{StaticResource UserTextBlockInfo}"/>
+                                        <Border Style="{StaticResource UserFieldsBorder}">
+                                            <TextBlock Text="{Binding SelectedClient.Name}"
+                                                       Style="{StaticResource UserTextBlockInfoAsConsultant}"/>
+                                        </Border>                                  
+                                    </DockPanel>
+                                    <DockPanel Margin="10,10,10,0" LastChildFill="True" Height="20">
+                                        <TextBlock Text="Отчество:" 
+                                                   Style="{StaticResource UserTextBlockInfo}"/>
+                                        <Border Style="{StaticResource UserFieldsBorder}">                               
+                                            <TextBlock Text="{Binding SelectedClient.Patronymics}"
+                                                     Style="{StaticResource UserTextBlockInfoAsConsultant}"/>
+                                        </Border>                                  
+                                    </DockPanel>
+                                    <DockPanel Margin="10,10,10,0" LastChildFill="True" Height="20">
+                                        <TextBlock Text="Телефон:" 
+                                                   Style="{StaticResource UserTextBlockInfo}"/>
+                                        <Border Style="{StaticResource UserFieldsBorder}">                               
+                                            <TextBox Text="{Binding SelectedClient.PhoneNumber}"
+                                                     Style="{StaticResource UserTextBoxInfo}"/>
+                                        </Border>                                  
+                                    </DockPanel>
+                                    <DockPanel Margin="10,10,10,0" LastChildFill="True" Height="20">
+                                        <TextBlock Text="Серия паспорта:" 
+                                                   Style="{StaticResource UserTextBlockInfo}"/>
+                                        <Border Style="{StaticResource UserFieldsBorder}">                               
+                                            <TextBlock Text="{Binding PassportSeries}"
+                                                     Style="{StaticResource UserTextBlockInfoAsConsultant}"/>
+                                        </Border>                                  
+                                    </DockPanel>
+                                    <DockPanel Margin="10" LastChildFill="True" Height="20">
+                                        <TextBlock Text="Номер паспорта:" 
+                                                   Style="{StaticResource UserTextBlockInfo}"/>
+                                        <Border Style="{StaticResource UserFieldsBorder}">                               
+                                            <TextBlock Text="{Binding PassportNumber}"
+                                                     Style="{StaticResource UserTextBlockInfoAsConsultant}"/>
+                                        </Border>                                  
+                                    </DockPanel>
+            
                                 </StackPanel>
+        
                             </GroupBox>
-                            <GroupBox Header="История изменений">
+    
+                            <GroupBox BorderThickness="2" BorderBrush="#FF137FDC">
+        
+                                <GroupBox.Header>
+                                    <TextBlock Text="История изменений"
+                                               Foreground="#FF137FDC"
+                                               FontFamily="Arial"
+                                               FontSize="16"
+                                               FontWeight="Black"/>
+                                </GroupBox.Header>
+        
                                 <StackPanel Orientation="Vertical">
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="Дата последнего изменения:"/>
-                                        <TextBox Text="{Binding SelectedClient.DataChangedTime}"
-                                                 IsReadOnly="True"
-                                                 MinWidth="120"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="Инициатор изменений:"/>
+            
+                                    <DockPanel Margin="10,10,10,0" LastChildFill="True">
+                                        <TextBlock Text="Дата последнего изменения:"                                          
+                                                   Style="{StaticResource UserTextBlockInfo}"/>
+                                        <TextBox Text="{Binding SelectedClient.DataChangedTime, Converter={StaticResource DateTimeCNV}}"
+                                                 Style="{StaticResource UserTextBoxInfo}"/>
+                                    </DockPanel>
+            
+                                    <DockPanel Margin="10,10,10,0" LastChildFill="False" Height="40">
+                                        <TextBlock Text="Инициатор изменений:"                                          
+                                                   Style="{StaticResource UserTextBlockInfo}"/>
                                         <TextBox Text="{Binding SelectedClient.ChangeInitiator}"
-                                                 IsReadOnly="True"
-                                                 MinWidth="120"/>
+                                                 Style="{StaticResource UserTextBoxInfo}"/>
+                                        <Button Width="25" Height="25" Background="Transparent" BorderThickness="0" Margin="10,0,0,0">
+                                            <StackPanel>
+                                                <fa:IconImage Icon="CircleInfo" Foreground="Violet"/>
+                                            </StackPanel>
+                                            <Button.ToolTip>
+                                                <ToolTip>
+                                                    <ListView ItemsSource="{Binding SelectedClient.Changes}" BorderThickness="0" Background="Transparent">
+                                                        <ListView.View>
+                                                            <GridView>
+                                                                <GridViewColumn Width="150">
+                                                                    <GridViewColumnHeader Background="Transparent" BorderThickness="0">
+                                                                        <TextBlock Text="Тип изменений"
+                                                                                 Background="Transparent"
+                                                                                 Foreground="Blue"
+                                                                                 FontSize="12"/>
+                                                                    </GridViewColumnHeader>
+                                                                    <GridViewColumn.CellTemplate>
+                                                                        <DataTemplate>
+                                                                            <TextBlock Text="{Binding Path=Key}"
+                                                                                       Background="Transparent"
+                                                                                       Foreground="Black"
+                                                                                       FontSize="10"/>
+                                                                        </DataTemplate>
+                                                                    </GridViewColumn.CellTemplate>
+                                                                </GridViewColumn>
+                                                                <GridViewColumn Width="150">
+                                                                    <GridViewColumnHeader>
+                                                                        <TextBlock Text="До изменения"
+                                                                                 Background="Transparent"
+                                                                                 Foreground="Blue"
+                                                                                 FontSize="12"/>
+                                                                    </GridViewColumnHeader>
+                                                                    <GridViewColumn.CellTemplate>
+                                                                        <DataTemplate>
+                                                                            <TextBlock Text="{Binding Path=Value}"
+                                                                                       Background="Transparent"
+                                                                                       Foreground="Black"
+                                                                                       FontSize="10"/>
+                                                                        </DataTemplate>
+                                                                    </GridViewColumn.CellTemplate>
+                                                                </GridViewColumn>
+                                                            </GridView>
+                                                        </ListView.View>
+                                                    </ListView>
+                                                </ToolTip>
+                                            </Button.ToolTip>
+                                            
+                                        </Button>
+                                    </DockPanel>
+                            
+                                    
+
                                     </StackPanel>
-                                    <ListView ItemsSource="{Binding SelectedClient.Changes}">
-                                        <ListView.View>
-                                            <GridView>
-                                                <GridView.Columns>
-                                                    <GridViewColumn Header="Тип изменений">
-                                                        <GridViewColumn.CellTemplate>
-                                                            <DataTemplate>
-                                                                <TextBlock Text="{Binding Path=Key}"/>
-                                                            </DataTemplate>
-                                                        </GridViewColumn.CellTemplate>
-                                                    </GridViewColumn>
-                                                    <GridViewColumn Header="Предыдущее значение">
-                                                        <GridViewColumn.CellTemplate>
-                                                            <DataTemplate>
-                                                                <TextBlock Text="{Binding Path=Value}"/>
-                                                            </DataTemplate>
-                                                        </GridViewColumn.CellTemplate>
-                                                    </GridViewColumn>
-                                                </GridView.Columns>
-                                            </GridView>
-                                        </ListView.View>
-                                    </ListView>
-
-
-                                </StackPanel>
-                            </GroupBox>
-                        </StackPanel>
+                                </GroupBox>
+    
+                            </StackPanel>
+                        
                     </Grid>
                 </Grid>
-                
-                
-            </Border>
+               
 
             <Button Content="Сохранить изменения" 
                     FontSize="24" 
+                    Width="200"
+                    Margin="0,20,0,0"
+                    Style="{StaticResource DefaultButton}"
                     Command="{Binding EditClientCommand}"
                     VerticalAlignment="Bottom"/>
         </StackPanel>

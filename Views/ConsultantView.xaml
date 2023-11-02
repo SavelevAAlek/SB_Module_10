@@ -2,16 +2,14 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:cnv="clr-namespace:SB_Module_10.ViewModels"
-             xmlns:local="clr-namespace:SB_Module_10.Views"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     
     <Grid>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="0"/>
+            <RowDefinition Height="30"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
@@ -19,27 +17,76 @@
                      Tag="Введите данные клиента" 
                      Grid.Row="0"
                      Text="{Binding DesiredClientsData, UpdateSourceTrigger=PropertyChanged}"/>
-       
-        <Grid Grid.Row="1">
+
+        <Grid Grid.Row="1"> 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
             <DataGrid ItemsSource="{Binding ClientsList}"
-                      AutoGenerateColumns="False"
-                      Grid.Column="0"
                       SelectedItem="{Binding SelectedClient}"
-                      IsReadOnly="True"
+                      AutoGenerateColumns="False"
+                      HeadersVisibility="Column"
+                      Background="GhostWhite"
                       ColumnWidth="*"
-                      HeadersVisibility="Column">
+                      Grid.Column="0"
+                      IsReadOnly="True"
+                      BorderThickness="0"
+                      GridLinesVisibility="None">
+            <DataGrid.Resources>
+              <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" 
+                               Color="#f5aff0"/>
+            </DataGrid.Resources>
+                <DataGrid.CellStyle>
+                    <Style TargetType="DataGridCell">
+                        <Setter Property="BorderThickness" Value="0"/>
+                    </Style>
+                </DataGrid.CellStyle>
+                
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Клиенты"
-                                        Binding="{Binding Converter={StaticResource ClientCNV}}"/>
-
-                    <DataGridTextColumn Header="Номер телефона"
-                                        Binding="{Binding PhoneNumber}"
-                                        MaxWidth="120"/>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.HeaderStyle>
+                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                <Setter Property="BorderBrush" Value="Transparent"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate>
+                                            <Border Style="{StaticResource UserFieldsBorder}"
+                                                    Margin="0"
+                                                    CornerRadius="20,0,0,0">
+                                                <TextBlock Text="Список клиентов"
+                                                           Style="{StaticResource UserTextBlockInfo}"
+                                                           FontSize="14"
+                                                           HorizontalAlignment="Center"
+                                                           Padding="5"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </DataGridTemplateColumn.HeaderStyle>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Border Style="{StaticResource UserFieldsBorder}"
+                                        Margin="0,5,0,5"
+                                        CornerRadius="0">
+                                    <TextBlock Style="{StaticResource ClientsListInfo}"
+                                               FontSize="16"
+                                               Padding="20,0,0,0"
+                                               FontWeight="DemiBold">
+                                        <TextBlock.Text>
+                                            <MultiBinding StringFormat="{}{0}   {1}   {2}">
+                                                <Binding Path="Surname"/>
+                                                <Binding Path="Name"/>
+                                                <Binding Path="Patronymics"/>
+                                            </MultiBinding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                </Border>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
 

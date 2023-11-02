@@ -39,5 +39,6 @@ namespace SB_Module_10.ViewModels
 
             EditClientCommand = new EditClientCommand(this, _employeeViewModel, _employee);
         }
+        public ClientViewModel(ViewModelBase viewModel, Employee employee) { }
     }
 }

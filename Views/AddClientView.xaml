@@ -2,35 +2,69 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:SB_Module_10.Views"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" MinWidth="320">
     
     <Grid>
                    
         <StackPanel Orientation="Vertical">
-                    
-            <TextBlock Text="Фамилия:"/>
-            <TextBox Text="{Binding Client.Surname}"/>
             
-            <TextBlock Text="Имя:"/>
-            <TextBox Text="{Binding Client.Name}"/>
-   
-            <TextBlock Text="Отчество:"/>
-            <TextBox Text="{Binding Client.Patronymics}"/>
-                    
-            <TextBlock Text="Номер телефона:"/>
-            <TextBox Text="{Binding Client.PhoneNumber}"/>
-                    
-            <TextBlock Text="Серия паспорта:"/>
-            <TextBox Text="{Binding Client.PassportSeries}"/>
-            
-            <TextBlock Text="Номер паспорта:"/>
-            <TextBox Text="{Binding Client.PassportNumber}"/>
+            <DockPanel Margin="10,10,10,0" LastChildFill="True" Height="20">
+                <TextBlock Text="Фамилия:" 
+                           Style="{StaticResource UserTextBlockInfo}"/>
+                <Border Style="{StaticResource UserFieldsBorder}">
+                    <TextBox Text="{Binding Client.Surname}"
+                             Style="{StaticResource UserTextBoxInfo}"/>
+                </Border>
+            </DockPanel>
+            <DockPanel Margin="10,10,10,0" LastChildFill="True" Height="20">
+                <TextBlock Text="Имя:" 
+                           Style="{StaticResource UserTextBlockInfo}"/>
+                <Border Style="{StaticResource UserFieldsBorder}">
+                    <TextBox Text="{Binding Client.Name}"
+                             Style="{StaticResource UserTextBoxInfo}"/>
+                </Border>
+            </DockPanel>
+            <DockPanel Margin="10,10,10,0" LastChildFill="True" Height="20">
+                <TextBlock Text="Отчество:" 
+                           Style="{StaticResource UserTextBlockInfo}"/>
+                <Border Style="{StaticResource UserFieldsBorder}">
+                    <TextBox Text="{Binding Client.Patronymics}"
+                             Style="{StaticResource UserTextBoxInfo}"/>
+                </Border>
+            </DockPanel>
+            <DockPanel Margin="10,10,10,0" LastChildFill="True" Height="20">
+                <TextBlock Text="Телефон:" 
+                           Style="{StaticResource UserTextBlockInfo}"/>
+                <Border Style="{StaticResource UserFieldsBorder}">
+                    <TextBox Text="{Binding Client.PhoneNumber}"
+                             Style="{StaticResource UserTextBoxInfo}"/>
+                </Border>
+            </DockPanel>
+            <DockPanel Margin="10,10,10,0" LastChildFill="True" Height="20">
+                <TextBlock Text="Серия паспорта:" 
+                           Style="{StaticResource UserTextBlockInfo}"/>
+                <Border Style="{StaticResource UserFieldsBorder}">
+                    <TextBox Text="{Binding Client.PassportSeries}"
+                             Style="{StaticResource UserTextBoxInfo}"/>
+                </Border>
+            </DockPanel>
+            <DockPanel Margin="10,10,10,0" LastChildFill="True" Height="20">
+                <TextBlock Text="Номер Паспорта:" 
+                           Style="{StaticResource UserTextBlockInfo}"/>
+                <Border Style="{StaticResource UserFieldsBorder}">
+                    <TextBox Text="{Binding Client.PassportNumber}"
+                             Style="{StaticResource UserTextBoxInfo}"/>
+                </Border>
+            </DockPanel>
 
-            <Button Content="SAVE" FontSize="40" Command="{Binding AddClientCommand}"
-                    VerticalAlignment="Bottom"/>
+
+            <Button Content="Сохранить" FontSize="20" Command="{Binding AddClientCommand}"
+                    VerticalAlignment="Bottom"
+                    Margin="0,10,0,0"
+                    Width="100"
+                    Style="{StaticResource DefaultButton}"/>
 
         </StackPanel>
                                                                                    
