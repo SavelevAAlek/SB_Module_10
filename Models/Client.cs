@@ -15,6 +15,8 @@ namespace SB_Module_10.Models
         public DateTime DataChangedTime { get; set; }
         public string ChangeInitiator { get; set; }
         public Dictionary<string, string> Changes { get; set; } = new Dictionary<string, string>();
+        public Account<decimal> DepositAccount { get; set; }
+        public Account<double> NonDepositAccount { get; set; }
 
         public Client() { }
         public Client(string surname, string name, string patronymics, string phoneNumber, string passportSeries, string passportNumber)
@@ -26,8 +28,8 @@ namespace SB_Module_10.Models
             PassportSeries = passportSeries;
             PassportNumber = passportNumber;
         }
-        public Client(Client client) : this (client.Surname, client.Name, client.Patronymics, client.PhoneNumber, client.PassportSeries, client.PassportNumber) { }
-        public Client(Employee employee, Client client, IEnumerable<KeyValuePair<string, string>> changes) 
+        public Client(Client client) : this(client.Surname, client.Name, client.Patronymics, client.PhoneNumber, client.PassportSeries, client.PassportNumber) { }
+        public Client(Employee employee, Client client, IEnumerable<KeyValuePair<string, string>> changes)
             : this(client.Surname, client.Name, client.Patronymics, client.PhoneNumber, client.PassportSeries, client.PassportNumber)
         {
             ChangeInitiator = employee.ToString();
@@ -36,5 +38,15 @@ namespace SB_Module_10.Models
         }
 
         public override string ToString() => $"{Surname}#{Name}#{Patronymics}#{PhoneNumber}#{Patronymics}";
+
+        public void OpenDepositAccount(decimal initialBalance = 0)
+        {
+            DepositAccount = new Account<decimal>(initialBalance);
+        }
+
+        public void OpenNonDepositAccount(double initialBalance = 0)
+        {
+            NonDepositAccount = new Account<double>(initialBalance);
+        }
     }
 }
