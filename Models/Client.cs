@@ -15,8 +15,8 @@ namespace SB_Module_10.Models
         public DateTime DataChangedTime { get; set; }
         public string ChangeInitiator { get; set; }
         public Dictionary<string, string> Changes { get; set; } = new Dictionary<string, string>();
-        public Account<decimal> DepositAccount { get; set; }
-        public Account<double> NonDepositAccount { get; set; }
+        public Account<DepositAccount> DepositAccount { get; set; }
+        public Account<NonDepositAccount> NonDepositAccount { get; set; }
 
         public Client() { }
         public Client(string surname, string name, string patronymics, string phoneNumber, string passportSeries, string passportNumber)
@@ -41,12 +41,12 @@ namespace SB_Module_10.Models
 
         public void OpenDepositAccount(decimal initialBalance = 0)
         {
-            DepositAccount = new Account<decimal>(initialBalance);
+            DepositAccount = new Account<DepositAccount>(new DepositAccount());
         }
 
         public void OpenNonDepositAccount(double initialBalance = 0)
         {
-            NonDepositAccount = new Account<double>(initialBalance);
+            NonDepositAccount = new Account<NonDepositAccount>(new NonDepositAccount());
         }
     }
 }

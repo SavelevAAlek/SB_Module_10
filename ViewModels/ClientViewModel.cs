@@ -1,5 +1,6 @@
 ﻿using SB_Module_10.Models;
 using SB_Module_10.ViewModels.Commands;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
 
 namespace SB_Module_10.ViewModels
@@ -17,6 +18,7 @@ namespace SB_Module_10.ViewModels
         public Client SelectedClient { get => _selectedClient; set => SetProperty(ref _selectedClient, value); }
 
         public ICommand EditClientCommand { get; set; } 
+        public ICommand OpenAccountCreationCommand { get; set; }
 
         public ClientViewModel(Client client, ViewModelBase employeeViewModel, Employee employee)
         {
@@ -38,6 +40,7 @@ namespace SB_Module_10.ViewModels
             }
 
             EditClientCommand = new EditClientCommand(this, _employeeViewModel, _employee);
+            OpenAccountCreationCommand = new OpenAccountCreationWindow(_selectedClient);
         }
         public ClientViewModel(ViewModelBase viewModel, Employee employee) { }
     }

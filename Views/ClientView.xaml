@@ -320,8 +320,28 @@
 
                                     </StackPanel>
                                 </GroupBox>
-    
+
+                            <GroupBox BorderThickness="2" BorderBrush="#FF137FDC">
+                                <GroupBox.Header>
+                                    <TextBlock Text="Информация по счетам"
+                                               Foreground="#FF137FDC"
+                                               FontFamily="Arial"
+                                               FontSize="16"
+                                               FontWeight="Black"/>
+                                </GroupBox.Header>
+                            <StackPanel Orientation="Vertical">
+                                
+
+                                <Button Content="Открыть счет"
+                                        Command="{Binding OpenAccountCreationCommand}"/>
+
+                                <TextBlock Text="{Binding SelectedClient.DepositAccount.Name}"/>
+                                <TextBlock Text="{Binding SelectedClient.NonDepositAccount.Name}"/>
                             </StackPanel>
+
+                        </GroupBox>
+
+                    </StackPanel>
                         
                     </Grid>
                 </Grid>
